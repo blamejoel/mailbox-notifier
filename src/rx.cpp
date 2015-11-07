@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ofstream.h>
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -16,6 +17,8 @@ int main() {
 
     unsigned char buf[4096];
     unsigned char CONFIRM = 0xEF;
+	
+	ofstream outputFile;
 
     char mode[]={'8', 'N', '1', 0};
 
@@ -39,18 +42,21 @@ int main() {
             char test = buf[0];
             if (test == 0x10) {
                 printf("package received!");
+				outputFile << "Package received!" << endl;
                 RS232_SendByte(cport_nr, CONFIRM);
             }
-            else if (test == 0x1A) {
+            /*else if (test == 0x1A) {
                 printf("package stolen!");
                 RS232_SendByte(cport_nr, CONFIRM);
-            }
-            printf("received %i bytes: %s\n", n, (char*)buf);
+            }*/
+            //printf("received %i bytes: %s\n", n, (char*)buf);
         }
 #ifdef _WIN32
     Sleep(100);
+	echo %date%
 #else
     usleep(100000);
+	date
 #endif
     }
 
