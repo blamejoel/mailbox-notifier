@@ -37,7 +37,7 @@ int main() {
                 }
             }
             char test = buf[0];
-            if (test == 0x10) {
+            if (test == 16) {
                 printf("package received!");
                 RS232_SendByte(cport_nr, CONFIRM);
             }
@@ -45,7 +45,9 @@ int main() {
                 printf("package stolen!");
                 RS232_SendByte(cport_nr, CONFIRM);
             }
-            printf("received %i bytes: %s\n", n, (char*)buf);
+            /* printf("You have mail!"); */
+            /* printf("received %i bytes: %s\n", n, (char*)buf); */
+            printf("You have mail!\n");
         }
 #ifdef _WIN32
     Sleep(100);
