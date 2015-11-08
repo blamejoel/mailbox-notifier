@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
 	
     char mode[]={'8', 'N', '1', 0};
 
-    if (argc > 1) {
+    if (argc == 2) {
         string log = "log/";
         string s = exec("date");
         log += s;
@@ -62,6 +62,12 @@ int main(int argc, char* argv[]) {
         outputFile.close();
         outputFile.open("src/web/mail");
         outputFile << "YOU HAVE MAIL!" << endl;
+        outputFile.close();
+    }
+
+    if (argc == 3) {
+        outputFile.open("src/web/mail");
+        outputFile << "no mail for you ¯\\_(ツ)_/¯" << endl;
         outputFile.close();
     }
 
@@ -100,6 +106,7 @@ int main(int argc, char* argv[]) {
             }
             else if (buf[0] == nomail) {
                 exec("rm src/web/mail");
+                printf("Mail is gone...");
             }
 
         }

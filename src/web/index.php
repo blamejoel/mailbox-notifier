@@ -7,11 +7,14 @@
 <style>
 .mail {
     text-align: center;
-    font-size: 3em;
+    font-size: 8em;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 150px;
 }
 </style>
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 </head>
 <body>
-    <div class="mail"><h1><?php include "mail"; ?></h1></div>
+    <div class="mail"><?php include "mail"; ?></div>
 </body>
 </html>
