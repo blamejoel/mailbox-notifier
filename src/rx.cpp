@@ -58,6 +58,10 @@ int main(int argc, char* argv[]) {
         printf("You have mail!\n");
         outputFile << "Package received!" << endl;
         outputFile << s << endl;
+        outputFile.close();
+        outputFile.open("src/web/body.php");
+        outputFile << "YOU HAVE MAIL!" << endl;
+        outputFile.close();
     }
 
     if (RS232_OpenComport(cport_nr, bdrate, mode)) {
@@ -87,6 +91,10 @@ int main(int argc, char* argv[]) {
             printf("You have mail!\n");
             outputFile << "Package received!" << endl;
 			outputFile << s << endl;
+            outputFile.close();
+            outputFile.open("src/web/body.php");
+            outputFile << "YOU HAVE MAIL!" << endl;
+            outputFile.close();
         }
 
 
@@ -96,7 +104,6 @@ int main(int argc, char* argv[]) {
     usleep(100000);
 #endif
 
-    outputFile.close();
     }
 
 return 0;
