@@ -58,12 +58,13 @@ int main() {
             /* printf("received %i bytes: %s\n", n, (char*)buf); */
             printf("You have mail!\n");
         }
+        time_t timev;
 #ifdef _WIN32
     Sleep(100);
-	outputFile << "Date: " << time_t time(time_t *time);	//output date to the log file
+	outputFile << "Date: " << time(&timev);	//output date to the log file
 #else
     usleep(100000);
-	outputFile << "Date: " << time_t time(time_t *time); //output date to the log file
+	outputFile << "Date: " << time(&timev); //output date to the log file
 #endif
 
     outputFile.close();
