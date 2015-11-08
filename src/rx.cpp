@@ -64,10 +64,10 @@ int main() {
 time_t timev;
 #ifdef _WIN32
     Sleep(100);
-	outputFile << "Date: " << time(&timev);	//output date to the log file
+	outputFile << "Date: " << time(&timev) << endl;	//output date to the log file
 #else
     usleep(100000);
-	outputFile << "Date: " << time(&timev); //output date to the log file
+	outputFile << "Date: " << time(&timev) << endl; //output date to the log file
 
 #endif
 
