@@ -8,6 +8,12 @@
 #endif
 
 #include "rs-232/rs232.h"
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+ofstream outputFile;
 
 int main() {
     int i, n,
@@ -16,8 +22,10 @@ int main() {
 
     unsigned char buf[4096];
     unsigned char CONFIRM = 0xEF;
-
+	
     char mode[]={'8', 'N', '1', 0};
+
+    outputFile.open("log");
 
     if (RS232_OpenComport(cport_nr, bdrate, mode)) {
         printf("Unable to open comport\n");
@@ -39,21 +47,26 @@ int main() {
             char test = buf[0];
             if (test == 16) {
                 printf("package received!");
+				outputFile << "Package received!" << endl;
                 RS232_SendByte(cport_nr, CONFIRM);
             }
-            else if (test == 0x1A) {
+            /*else if (test == 0x1A) {
                 printf("package stolen!");
                 RS232_SendByte(cport_nr, CONFIRM);
             }
-            /* printf("You have mail!"); */
+             printf("You have mail!"); */
             /* printf("received %i bytes: %s\n", n, (char*)buf); */
             printf("You have mail!\n");
         }
 #ifdef _WIN32
     Sleep(100);
+	echo %date%
 #else
     usleep(100000);
+	date
 #endif
+
+    outputFile.close();
     }
 
 return 0;
