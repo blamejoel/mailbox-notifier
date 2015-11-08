@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 
     if (argc == 3) {
         outputFile.open("src/web/mail");
-        outputFile << "no mail for you ¯\\_(ツ)_/¯" << endl;
+        outputFile << "no mail for you<br/>¯\\_(ツ)_/¯" << endl;
         outputFile.close();
     }
 
@@ -105,7 +105,10 @@ int main(int argc, char* argv[]) {
                 outputFile.close();
             }
             else if (buf[0] == nomail) {
-                exec("rm src/web/mail");
+                /* exec("rm src/web/mail"); */
+                outputFile.open("src/web/mail");
+                outputFile << "no mail for you<br/>¯\\_(ツ)_/¯" << endl;
+                outputFile.close();
                 printf("Mail is gone...");
             }
 

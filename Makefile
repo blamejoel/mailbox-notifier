@@ -31,4 +31,4 @@ debug: clean
 	$(CC) -g $(CFLAGS) $(LIBS) $(SRCS) -o $(BIN)$(TARGET)
 
 clean: 
-	rm -rf $(BIN)$(TARGET) bin src/web/mail
+	rm -rf $(BIN)$(TARGET) bin 
