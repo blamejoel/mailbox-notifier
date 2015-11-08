@@ -59,6 +59,7 @@ int main() {
             printf("You have mail!\n");
 			outputFile << "Package received!" << endl;
         }
+
 		time_t timev
 #ifdef _WIN32
     Sleep(100);
@@ -66,6 +67,14 @@ int main() {
 #else
     usleep(100000);
 	outputFile << "Date: " << time(&timev) << endl; //output date to the log file
+        time_t timev;
+#ifdef _WIN32
+    Sleep(100);
+	outputFile << "Date: " << time(&timev);	//output date to the log file
+#else
+    usleep(100000);
+	outputFile << "Date: " << time(&timev); //output date to the log file
+
 #endif
 
     outputFile.close();
