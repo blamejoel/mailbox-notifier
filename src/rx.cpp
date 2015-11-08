@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
         outputFile << "Package received!" << endl;
         outputFile << s << endl;
         outputFile.close();
-        outputFile.open("src/web/body.php");
+        outputFile.open("src/web/mail");
         outputFile << "YOU HAVE MAIL!" << endl;
         outputFile.close();
     }
@@ -92,7 +92,7 @@ int main(int argc, char* argv[]) {
             outputFile << "Package received!" << endl;
 			outputFile << s << endl;
             outputFile.close();
-            outputFile.open("src/web/body.php");
+            outputFile.open("src/web/mail");
             outputFile << "YOU HAVE MAIL!" << endl;
             outputFile.close();
         }

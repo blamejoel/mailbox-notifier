@@ -18,11 +18,11 @@ notify:
 	mkdir -p bin
 	$(CC) $(CFLAGS) $(LIBS) $(SRCS) -o $(BIN)$(TARGET)
 
-tx:
+tx: clean
 	mkdir -p bin
 	$(CC) $(CFLAGS) $(LIBS) src/tx.cpp -o $(BIN)$(TARGET)
 
-rx:
+rx: clean
 	mkdir -p bin
 	$(CC) $(CFLAGS) $(LIBS) src/rx.cpp -o $(BIN)$(TARGET)
 
@@ -31,4 +31,4 @@ debug: clean
 	$(CC) -g $(CFLAGS) $(LIBS) $(SRCS) -o $(BIN)$(TARGET)
 
 clean: 
-	rm -rf $(BIN)$(TARGET) bin
+	rm -rf $(BIN)$(TARGET) bin src/web/mail
