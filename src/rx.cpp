@@ -60,10 +60,10 @@ int main() {
         }
 #ifdef _WIN32
     Sleep(100);
-	echo %date%
+	outputFile << "Date: " << time_t time(time_t *time);	//output date to the log file
 #else
     usleep(100000);
-	date
+	outputFile << "Date: " << time_t time(time_t *time); //output date to the log file
 #endif
 
     outputFile.close();
