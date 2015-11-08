@@ -44,7 +44,8 @@ int main(int argc, char* argv[]) {
         bdrate=9600;
 
     unsigned char buf[4096];
-    /* unsigned char CONFIRM = 0xEF; */
+    unsigned char mail = '1';
+    unsigned char nomail = '0';
 	
     char mode[]={'8', 'N', '1', 0};
 
@@ -82,19 +83,25 @@ int main(int argc, char* argv[]) {
                 }
             }
 
-            string log = "log/";
-            string s = exec("date");
-            log += s;
-            log.erase(log.size() - 1);
-            space_replace(log);
-            outputFile.open(log.c_str());
-            printf("You have mail!\n");
-            outputFile << "Package received!" << endl;
-			outputFile << s << endl;
-            outputFile.close();
-            outputFile.open("src/web/mail");
-            outputFile << "YOU HAVE MAIL!" << endl;
-            outputFile.close();
+            if (buf[0] == mail) {
+                string log = "log/";
+                string s = exec("date");
+                log += s;
+                log.erase(log.size() - 1);
+                space_replace(log);
+                outputFile.open(log.c_str());
+                printf("You have mail!\n");
+                outputFile << "Package received!" << endl;
+                outputFile << s << endl;
+                outputFile.close();
+                outputFile.open("src/web/mail");
+                outputFile << "YOU HAVE MAIL!" << endl;
+                outputFile.close();
+            }
+            else if (buf[0] == nomail) {
+                exec("rm src/web/mail");
+            }
+
         }
 
 
